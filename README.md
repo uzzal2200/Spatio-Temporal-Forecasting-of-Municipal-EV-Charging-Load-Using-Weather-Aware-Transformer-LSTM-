@@ -254,7 +254,7 @@ This is a research project. For questions or collaboration:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for details
 
 ---
 
