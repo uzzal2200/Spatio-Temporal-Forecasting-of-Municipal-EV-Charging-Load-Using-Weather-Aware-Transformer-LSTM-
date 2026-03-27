@@ -29,7 +29,9 @@ EV charging demand varies with time, human mobility patterns, and weather dynami
 11. [Troubleshooting](#troubleshooting)
 12. [Contributing](#contributing)
 13. [License](#license)
-
+14. [Key Statistics](#key-statistics)
+15. [Column Descriptions](#column-descriptions)
+16. [Author](#author)
 
 ## Core Features
 
@@ -211,19 +213,6 @@ Please include:
 
 This project is licensed under the MIT License.
 
----
-
-## Author
-
-MD Uzzal Mia  
-Information and Communication Engineering  
-Pabna University of Science and Techonoloy  
-Email: uzzal.220605@s.pust.ac.bd
-- `Data/EV_Charging_Cleaned.csv` - Cleaned EV data (211,324 rows)
-- `Data/Final_EV_Dataset.csv` - Merged EV + weather data (630,002 rows)
-
----
-
 ## Key Statistics
 
 | Metric | Value |
@@ -236,8 +225,6 @@ Email: uzzal.220605@s.pust.ac.bd
 | Date Range | 2021-07-31 to 2025-12-15 |
 | **Dates with 3 stations** | 1,485 |
 | **Dates with 2 stations** | 114 |
-
----
 
 ## Column Descriptions
 
@@ -264,54 +251,9 @@ Email: uzzal.220605@s.pust.ac.bd
 | `p01m` | Total precipitation | inches |
 | `snowdepth` | Snow depth presence (0=absent, 1=present) | Binary |
 
----
+## Author
 
-## Files Generated
-- ✅ `Data/EV_Charging_Cleaned.csv`
-- ✅ `Data/ASOS_Cleaned.csv`
-- ✅ `Data/Final_EV_Dataset.csv`
-
----
-
-## Data Quality Notes
-
-1. **EV Data:** Cleaned from missing values and filtered to specific date range
-2. **ASOS Data:** Aggregated from hourly to daily, standardized across 3 stations
-3. **Merge:** LEFT JOIN preserves all EV records; weather data aligned by date
-4. **Missing Weather:** Some dates have only 2 out of 3 weather stations available
-
----
-
----
-
-## Analysis Ready
-
-The `Final_EV_Dataset.csv` file is now ready for:
-- Exploratory Data Analysis (EDA)
-- Correlation analysis between charging patterns and weather
-- Predictive modeling
-- Statistical analysis
-
----
-
-## Project Structure
-```
-Project-EV/
-├── README.md                          (Project documentation)
-├── EV_Charging_Analysis.ipynb         (Main analysis notebook)
-├── requirements.txt                   (Python package dependencies)
-└── Data/
-    ├── Electric_Vehicle__EV__Charging_Data-_Municipal_Lots_and_Garages.csv
-    ├── asos.csv
-    ├── asos_daily_cleaned.csv
-    ├── EV_Charging_Cleaned.csv
-    ├── ASOS_Cleaned.csv
-    └── Final_EV_Dataset.csv
-```
-
----
-
-**Last Updated:** February 28, 2026
-**Status:** ✅ Data Cleaning & Merging Complete
-=======
->>>>>>> Stashed changes
+MD Uzzal Mia  
+Information and Communication Engineering  
+Pabna University of Science and Technology  
+Email: uzzal.220605@s.pust.ac.bd
