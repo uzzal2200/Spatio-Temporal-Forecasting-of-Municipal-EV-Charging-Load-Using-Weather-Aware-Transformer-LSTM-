@@ -313,7 +313,7 @@ This project is licensed under the MIT License.
 
 ## Author
 
-MD Uzzal Mia  
+MD Uzzal Mia and Sajib Debnath  
 Information and Communication Engineering  
 Pabna University of Science and Technology  
 Email: uzzal.220605@s.pust.ac.bd
