@@ -1,0 +1,8 @@
+Section,Variant,R2,MAE (kWh),RMSE (kWh),MAPE (%),sMAPE (%),Delta RMSE (%)
+Hyper-parameter,"N_enc=2, h=8, h_LSTM=128",0.9622,71.85,110.85,22.37,17.43,+17.7
+Hyper-parameter,"N_enc=6, h=8, h_LSTM=128",0.9714,64.23,95.68,19.94,15.63,+1.6
+Hyper-parameter,"N_enc=4, h=4, h_LSTM=128",0.9658,69.41,106.39,21.52,16.72,+12.9
+Hyper-parameter,"N_enc=4, h=16, h_LSTM=128",0.9722,63.45,95.34,19.81,15.44,+1.2
+Hyper-parameter,"N_enc=4, h=8, h_LSTM=64",0.9667,68.74,105.21,21.38,16.61,+11.7
+Hyper-parameter,"N_enc=4, h=8, h_LSTM=256",0.9728,62.95,94.78,19.69,15.37,+0.6
+Hyper-parameter,"Full Proposed Model (N_enc=4, h=8, h_LSTM=128)",0.9731,62.71,94.21,19.62,15.54,--

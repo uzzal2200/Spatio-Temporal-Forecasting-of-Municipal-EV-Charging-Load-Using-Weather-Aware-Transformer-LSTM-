@@ -1,0 +1,4 @@
+Section,Variant,R2,MAE (kWh),RMSE (kWh),MAPE (%),sMAPE (%),Delta RMSE (%)
+Architectural,Transformer-only (no LSTM decoder),0.9408,93.12,139.76,29.94,22.48,+48.4
+Architectural,LSTM-only (no Transformer encoder),0.9215,108.11,160.94,34.01,26.29,+70.8
+Architectural,LSTM -> Transformer (reverse order),0.9512,84.36,127.05,25.71,19.98,+34.9

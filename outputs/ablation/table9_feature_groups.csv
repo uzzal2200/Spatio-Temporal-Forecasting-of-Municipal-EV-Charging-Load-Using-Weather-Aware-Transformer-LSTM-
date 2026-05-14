@@ -1,0 +1,6 @@
+Section,Variant,R2,MAE (kWh),RMSE (kWh),MAPE (%),sMAPE (%),Delta RMSE (%)
+Feature-group,w/o weather features,0.9602,73.54,114.83,23.18,18.09,+21.9
+Feature-group,w/o autoregressive lag features,0.9387,96.42,142.55,30.85,24.01,+51.3
+Feature-group,w/o rolling statistics,0.9521,81.03,125.74,25.34,19.74,+33.5
+Feature-group,w/o cyclic encodings,0.9658,68.92,106.41,21.46,16.72,+13.0
+Feature-group,w/o behavioural features,0.9684,65.83,100.27,20.72,16.14,+6.4

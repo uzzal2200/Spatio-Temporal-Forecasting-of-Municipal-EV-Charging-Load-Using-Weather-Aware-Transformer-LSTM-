@@ -14,6 +14,11 @@ from .plots import (
 	plot_temporal_scales,
 	plot_uncertainty_intervals,
 )
+from .revision_plots import (
+	plot_figure19_demand_bin_error,
+	plot_figure20_feature_group_ablation,
+	plot_figure21_hyperparameter_sensitivity,
+)
 
 __all__ = [
 	"plot_loss_curves",
@@ -30,4 +35,7 @@ __all__ = [
 	"plot_model_radar",
 	"plot_best_prediction_region",
 	"plot_station_level_average",
+	"plot_figure19_demand_bin_error",
+	"plot_figure20_feature_group_ablation",
+	"plot_figure21_hyperparameter_sensitivity",
 ]

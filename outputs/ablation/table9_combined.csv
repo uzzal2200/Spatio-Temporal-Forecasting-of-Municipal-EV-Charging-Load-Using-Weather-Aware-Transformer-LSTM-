@@ -1,0 +1,16 @@
+Section,Variant,R2,MAE (kWh),RMSE (kWh),MAPE (%),sMAPE (%),Delta RMSE (%)
+Architectural,Transformer-only (no LSTM decoder),0.9408,93.12,139.76,29.94,22.48,+48.4
+Architectural,LSTM-only (no Transformer encoder),0.9215,108.11,160.94,34.01,26.29,+70.8
+Architectural,LSTM -> Transformer (reverse order),0.9512,84.36,127.05,25.71,19.98,+34.9
+Feature-group,w/o weather features,0.9602,73.54,114.83,23.18,18.09,+21.9
+Feature-group,w/o autoregressive lag features,0.9387,96.42,142.55,30.85,24.01,+51.3
+Feature-group,w/o rolling statistics,0.9521,81.03,125.74,25.34,19.74,+33.5
+Feature-group,w/o cyclic encodings,0.9658,68.92,106.41,21.46,16.72,+13.0
+Feature-group,w/o behavioural features,0.9684,65.83,100.27,20.72,16.14,+6.4
+Hyper-parameter,"N_enc=2, h=8, h_LSTM=128",0.9622,71.85,110.85,22.37,17.43,+17.7
+Hyper-parameter,"N_enc=6, h=8, h_LSTM=128",0.9714,64.23,95.68,19.94,15.63,+1.6
+Hyper-parameter,"N_enc=4, h=4, h_LSTM=128",0.9658,69.41,106.39,21.52,16.72,+12.9
+Hyper-parameter,"N_enc=4, h=16, h_LSTM=128",0.9722,63.45,95.34,19.81,15.44,+1.2
+Hyper-parameter,"N_enc=4, h=8, h_LSTM=64",0.9667,68.74,105.21,21.38,16.61,+11.7
+Hyper-parameter,"N_enc=4, h=8, h_LSTM=256",0.9728,62.95,94.78,19.69,15.37,+0.6
+Hyper-parameter,"Full Proposed Model (N_enc=4, h=8, h_LSTM=128)",0.9731,62.71,94.21,19.62,15.54,--

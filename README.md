@@ -50,7 +50,7 @@ EV charging demand varies with time, human mobility patterns, and weather dynami
 
 Default raw input files expected by the code:
 
-- Data/Electric_Vehicle__EV__Charging_Data-_Municipal_Lots_and_Garages.csv
+- Data/Electric_Vehicle**EV**Charging_Data-\_Municipal_Lots_and_Garages.csv
 - Data/asos.csv
 
 ## Methodology
@@ -73,24 +73,60 @@ Main pipeline stages:
 
 ```text
 Project-EV/
-├── ⚙️ configs/
-│   └── 📄 config.py
-├── 🗂️ Data/
-├── 🖼️ figure/
-├── 📊 results/
-│   ├── EDA Plot/
-│   ├── evaluation plot/
-│
-├── 🚀 scripts/
-│   └── run_pipeline.py
-├── 🧠 src/
+├── configs/
+│   ├── __init__.py
+│   └── config.py
+├── Data/
+├── figure/
+├── notebooks/
+├── outputs/
+│   ├── figures/EDA Plot/
+│   └── figurs/evaluation plot/
+│   ├── revision_figures/
+│   ├── ablation/
+│   │   ├── table9_architectural.csv
+│   │   ├── table9_feature_groups.csv
+│   │   ├── table9_hyperparameters.csv
+│   │   └── table9_combined.csv
+│   ├── advanced_baselines_results.csv
+│   ├── multi_seed_results.csv
+│   ├── per_station_results.csv
+│   ├── demand_bin_results.csv
+│   └── efficiency_results.csv
+├── scripts/
+│   ├── run_pipeline.py
+│   ├── run_advanced_baselines.py
+│   ├── run_multi_seed.py
+│   ├── run_error_decomposition.py
+│   ├── run_ablation_architectural.py
+│   ├── run_ablation_feature_groups.py
+│   ├── run_ablation_hyperparameters.py
+│   └── run_efficiency_benchmark.py
+├── src/
+│   ├── __init__.py
 │   ├── data/
 │   ├── models/
+│   │   ├── architectures.py
+│   │   └── advanced_baselines.py
+│   ├── ablation/
+│   │   ├── architectural.py
+│   │   ├── feature_groups.py
+│   │   └── hyperparameters.py
 │   ├── training/
+│   │   ├── trainer.py
+│   │   └── multi_seed.py
 │   ├── evaluation/
+│   │   ├── metrics.py
+│   │   ├── reporting.py
+│   │   ├── statistical_tests.py
+│   │   ├── error_decomposition.py
+│   │   └── efficiency.py
 │   └── visualization/
-├── ▶️ main.py
-└── 📦 requirements.txt
+│       ├── plots.py
+│       └── revision_plots.py
+├── main.py
+├── requirements.txt
+
 ```
 
 Architecture diagram:
@@ -131,12 +167,34 @@ python scripts/run_pipeline.py --skip-data
 python scripts/run_pipeline.py --skip-train
 ```
 
+### Reviewer revision artefacts
+
+```bash
+python scripts/run_advanced_baselines.py
+python scripts/run_multi_seed.py
+python scripts/run_error_decomposition.py
+python scripts/run_ablation_architectural.py
+python scripts/run_ablation_feature_groups.py
+python scripts/run_ablation_hyperparameters.py
+python scripts/run_efficiency_benchmark.py
+```
+
 ## Outputs
 
 The current implementation writes fresh outputs to:
 
 - outputs/model_comparison_results.csv
 - outputs/figures/
+
+Reviewer-response additions are written to:
+
+- outputs/advanced_baselines_results.csv
+- outputs/multi_seed_results.csv
+- outputs/per_station_results.csv
+- outputs/demand_bin_results.csv
+- outputs/efficiency_results.csv
+- outputs/ablation/
+- outputs/revision_figures/
 
 Historical experiment artifacts are also available under:
 
@@ -184,7 +242,7 @@ In the latest report, Transformer-LSTM shows the strongest overall performance a
 
 ### Prediction Plot
 
-![Model Prediction Comparison](results/evaluation%20plot/actual_vs_predictedJ_all_model.png)
+![Model Prediction Comparison](outputs/figures/evaluation%20plot/actual_vs_predictedJ_all_model.png)
 
 Reference summary table file:
 
@@ -215,41 +273,43 @@ This project is licensed under the MIT License.
 
 ## Key Statistics
 
-| Metric | Value |
-|--------|-------|
-| EV Data Rows | 211,324 |
-| ASOS Data Rows | 4,683 |
-| Merged Dataset Rows | 630,002 |
-| Merge Ratio | 2.98 rows per EV record |
-| Weather Stations | 3 (NYC, LGA, JRB) |
-| Date Range | 2021-07-31 to 2025-12-15 |
-| **Dates with 3 stations** | 1,485 |
-| **Dates with 2 stations** | 114 |
+| Metric                    | Value                    |
+| ------------------------- | ------------------------ |
+| EV Data Rows              | 211,324                  |
+| ASOS Data Rows            | 4,683                    |
+| Merged Dataset Rows       | 630,002                  |
+| Merge Ratio               | 2.98 rows per EV record  |
+| Weather Stations          | 3 (NYC, LGA, JRB)        |
+| Date Range                | 2021-07-31 to 2025-12-15 |
+| **Dates with 3 stations** | 1,485                    |
+| **Dates with 2 stations** | 114                      |
 
 ## Column Descriptions
 
 ### EV Charging Columns
-| Column | Description |
-|--------|------------|
-| `Date` | Date of charging |
-| `Station ID` | Unique charging station identifier |
-| `Location Name` | Physical location of charging station |
-| `Connected Time` | Time when vehicle connected to charger |
-| `Disconnected Time` | Time when vehicle disconnected |
-| `Charge Duration (min)` | Duration of charging in minutes |
-| `Connected Duration (min)` | Total connection duration |
-| `Energy Provided (kWh)` | Energy delivered in kilowatt-hours |
+
+| Column                     | Description                            |
+| -------------------------- | -------------------------------------- |
+| `Date`                     | Date of charging                       |
+| `Station ID`               | Unique charging station identifier     |
+| `Location Name`            | Physical location of charging station  |
+| `Connected Time`           | Time when vehicle connected to charger |
+| `Disconnected Time`        | Time when vehicle disconnected         |
+| `Charge Duration (min)`    | Duration of charging in minutes        |
+| `Connected Duration (min)` | Total connection duration              |
+| `Energy Provided (kWh)`    | Energy delivered in kilowatt-hours     |
 
 ### Weather Columns
-| Column | Description | Unit/Type |
-|--------|------------|------------|
-| `station` | Weather station code (NYC/LGA/JRB) | String |
-| `tmpf` | Average temperature | °F |
-| `relh` | Average relative humidity | % |
-| `feel` | Average feels-like temperature | °F |
-| `sped` | Average wind speed | mph |
-| `p01m` | Total precipitation | inches |
-| `snowdepth` | Snow depth presence (0=absent, 1=present) | Binary |
+
+| Column      | Description                               | Unit/Type |
+| ----------- | ----------------------------------------- | --------- |
+| `station`   | Weather station code (NYC/LGA/JRB)        | String    |
+| `tmpf`      | Average temperature                       | °F        |
+| `relh`      | Average relative humidity                 | %         |
+| `feel`      | Average feels-like temperature            | °F        |
+| `sped`      | Average wind speed                        | mph       |
+| `p01m`      | Total precipitation                       | inches    |
+| `snowdepth` | Snow depth presence (0=absent, 1=present) | Binary    |
 
 ## Author
 
